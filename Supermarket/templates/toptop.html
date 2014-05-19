@@ -1,0 +1,6 @@
+{% for t, c in recs.items %}
+    <tr><td>{{ forloop.counter }}</td>
+    <td>{{ t.name }}</td>
+    <td>{{ c }}</td>
+    <td><span class="info_span" data-itemid="{{ t.id }}">Info</span></td></tr>
+{% endfor %}

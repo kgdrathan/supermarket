@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Manager :: Super Market Automation</title>
+    {% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/simplemodal.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/table.min.css' %}"/>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:600' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="{% static 'js/mootools.core.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/mootools.more.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/simplemodal.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/standalone.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/highcharts.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}" charset="utf-8"></script>
+</head>
+<body>
+    <div id="header">
+        <h2>Manager Workspace ( {{user.user.username}} )</h2>
+        <div id="header_right" align="right">
+            <span class="menu_item" id="addUser">New User</span>
+            <a class="menu_item" href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+    <div id="manager_wrapper">
+        <div id="manager_left">
+            <form style="display: inline-block;">
+                <input type="text" id="search_input" autofocus="autofocus" style="width: 828px; height: 26px;"/>
+                <button class="button" id="search" style="position: relative; top: -48px; left: 600px;">Search</button>
+            </form>
+            <div id="manager_table"><table class="ui celled inverted purple table segment">
+                <thead>
+                        <tr><th>#</th>
+                        <th>Name</th>
+                        <th>Information</th></tr>
+                    </thead>
+                    <tbody style="height: 40%" id="search_tbody">
+                    {% for sit in sits %}
+                        <tr><td>{{ forloop.counter }}.</td>
+                        <td>{{ sit.name }} ( {{ sit.id }} )</td>
+                        <td><span class="info_search" data-itemid="{{ sit.id }}">Info</span></td></tr>
+                    {% endfor %}
+                    </tbody>
+            </table></div>
+        </div>
+        <span id="bStock"></span> <span id="bItem"></span> <span id="register"></span> <span id="print"></span> <span id="cancel_txn"></span>
+        <div id="manager_right">
+            <div id="top_today" class="with_title">
+                <div class="title">
+                    <span>Top 10 Items today</span>
+                    <select id="top1">
+                        <option data-flag="1">wrt Quantity</option>
+                        <option data-flag="2">wrt Profit</option>
+                    </select>
+                </div>
+                <div class="table_in"><table class="ui celled inverted purple table segment">
+                    <thead>
+                        <tr><th>#</th>
+                        <th>Name</th>
+                        <th>Parameter</th>
+                        <th>Information</th></tr>
+                    </thead>
+                    <tbody style="height: 40%" id="top1_tbody">
+                    {% for t, c in top.items %}
+                        <tr><td>{{ forloop.counter }}</td>
+                        <td>{{ t.name }}</td>
+                        <td>{{ c }}</td>
+                        <td><span class="info_span" data-itemid="{{ t.id }}">Info</span></td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table></div>
+            </div>
+            <div id="top_last" class="with_title">
+                <div class="title">
+                    <span>Top 10 Items in previous 10 days</span>
+                    <select id="top2">
+                        <option data-flag="1">wrt Quantity</option>
+                        <option data-flag="2">wrt Profit</option>
+                    </select>
+                </div>
+                <div class="table_in"><table class="ui celled inverted purple table segment">
+                    <thead>
+                        <tr><th>#</th>
+                        <th>Name</th>
+                        <th>Parameter</th>
+                        <th>Information</th></tr>
+                    </thead>
+                    <tbody style="height: 40%" id="top2_tbody">
+                    {% for t, c in top10.items %}
+                        <tr><td>{{ forloop.counter }}</td>
+                        <td>{{ t.name }}</td>
+                        <td>{{ c }}</td>
+                        <td><span class="info_span" data-itemid="{{ t.id }}">Info</span></td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

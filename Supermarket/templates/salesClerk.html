@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Sales Clerk :: Super Market Automation</title>
+    {% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/simplemodal.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/table.min.css' %}"/>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:600' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="{% static 'js/mootools.core.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/mootools.more.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/simplemodal.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}" charset="utf-8"></script>
+</head>
+<body>
+    <div id="header">
+        <h2>Sales Clerk Workspace ( {{user.user.username}} )</h2>
+        <div id="header_right" align="right">
+            <a class="menu_item" href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+    <div id="manager_left">
+        <table>
+            <tr><td><input type="text" id="barcode" autofocus="autofocus" style="width: 200px; height: 26px;"/></td>
+            <td><button id="register" class="button" style="position: relative; top: -5px; right: 66%; width: 120px; float: left;">Register Item</button></td>
+            <td><button id="cancel_txn" class="button" style="position: relative; top: -5px; right: 122%; width: 150px; float: left;">Cancel Transaction</button></td>
+            <td id="total" style="font-family: fantasy; position: relative; left: 5%;">Total: 0</td>
+            <td><button id="print" class="button" style="position: relative; top: -5px; left: -25%; width: 120px; float: right;">Print Bill</button></td></tr>
+        </table>
+        <div id="addUser"></div> <div id="top1"></div> <div id="top2"></div> <div id="bStock"></div> <div id="bItem"></div> <div id="bStats"></div>
+        <div id="nope" style="position: fixed; height: 50%; width: 96%; overflow-y: scroll; overflow-x: hidden;">
+        <table id="txns_table" class="ui celled inverted purple table segment">
+            <thead>
+                <tr><th>#</th>
+                <th>Name (Item. no)</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Price</th>
+                <!--<th>Decrease</th>--></tr>
+            </thead>
+            <tbody style="height: 40%">
+            </tbody>
+        </table></div>
+    </div>
+</body>
+</html>

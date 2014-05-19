@@ -1,0 +1,42 @@
+<span id="message" style="margin: 5px;"></span>
+<h2>{{ sit.name }}</h2>
+<table class="ui celled purple table segment">
+    <thead>
+        <tr><th>#</th>
+        <th>Quantity</th>
+        <th>Max Price</th>
+        <th>Real Price</th>
+        <th>Sale Price</th>
+        {% if manager %}
+        <th>Change</th>
+        {% endif %}</tr>
+    </thead>
+    <tbody>
+    {% for it in sit.item_set.all %}
+        <tr><td>{{ forloop.counter }}</td>
+        <td>{{ it.quantity }}</td>
+        <td>{{ it.max_price }}</td>
+        <td>{{ it.real_price }}</td>
+        <td><input type="text" style="width: 50px;" value="{{ it.sale_price }}" {% if not manager %} readonly="" {% endif %}></td>
+        {% if manager %}
+        <td><button class="button help_fuji" style="height: 30px; margin: 0px;" data-itemid="{{ it.id }}">Change</button></td>
+        {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table> </br>
+{% if manager %}
+<fieldset>
+    <legend>Statistics</legend>
+    <form><table style="width: 210%; position: relative; right: 50%;">
+        <tr><td>Start date: </td><td><input type="text" id="start" style="width: 120px;" autofocus="autofocus" placeholder="yyyy-mm-dd"></td>
+        <td>End date: </td><td><input type="text" id="end" style="width: 120px;" placeholder="yyyy-mm-dd"></td>
+        <td>W R T: </td><td><select id="stat_select">
+                                <option data-flag="1">Quantity</option>
+                                <option data-flag="2">Profit</option>
+                            </select></td>
+        <td><button type="submit" class="button bStats" style="height: 30px; margin: 0px 0px 0px 10px;" data-itemid="{{ sit.id }}">Get</button></td></tr>
+    </table></form>
+    <div id="container"></div>
+</fieldset>
+{% endif %}

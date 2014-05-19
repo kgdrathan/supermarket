@@ -1,0 +1,152 @@
+body {
+    background-color: #7A9A95;
+    font-family: 'Josefin Slab', serif;
+    font-weight: 300;
+}
+h2 {
+    position: relative;
+    top: -10px;
+    float: left;
+    color: #293E6A;
+    text-shadow: 1px 1px 3px rgba(80, 80, 80, 1);
+    padding-left: 50px;
+}
+h1 {
+    color: #293E6A;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(80, 80, 80, 1)
+}
+a {
+    text-decoration: none;
+}
+input {
+    width: 200px;
+    height: 20px;
+    padding-left: 5px;
+    border-style: none;
+    border-radius: 3px;
+    background-color: rgb(240, 240, 240);
+    border: 1px solid grey;
+}
+input:focus {
+    outline-color: purple;
+    outline-width: 1px;
+}
+select {
+    float: right;
+    border-radius: 3px;
+    border: 1px solid grey;
+}
+form {
+    width: 300px;
+    margin: auto auto;
+}
+.menu_item {
+
+}
+#header {
+    width: 99%;
+    display: inline-block;
+    background-color: rgba(59, 89, 152, 0.6);
+    border-radius: 3px;
+    margin: 7px;
+    height: 52px;
+}
+#header_right {
+    margin: 16px 45px 0px 0px;
+    float: right;
+}
+.menu_item {
+    text-decoration: none;
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px;
+    color: black;
+    border: 1px solid black;
+}
+.menu_item:hover {
+    background-color: rgba(100, 100, 100, 0.7);
+}
+#manager_table {
+    position: relative;
+    top: -35px;
+    width: 915px;
+    height: 525px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#message, #message2, #message3 {
+    display:box;
+    display:-webkit-box;
+    display:-o-box;
+    display:-ms-box;
+    display:-moz-box;
+    box-pack:center;
+    -webkit-box-pack:center;
+    -moz-box-pack:center;
+    -o-box-pack:center;
+    -ms-box-pack:center;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 0, 0.37);
+}
+#login_wrapper {
+    width: 400px;
+    margin: 100px auto;
+}
+#login {
+    padding: 20px;
+    background-color: rgba(59, 89, 152, 0.6);
+    border-radius: 5px;
+}
+.button {
+    background-color: #599BB3;
+    margin: 20px auto 10px 250px;
+    border-radius: 3px;
+    border-style: none;
+    border: 2px solid rgb(0, 102, 255);
+    padding: 5px 10px;
+}
+.button:focus {
+    outline-color: grey;
+    outline-width: 2px;
+}
+.button:active {
+    background-color: #6AACC4;
+}
+#manager_left {
+    position: fixed;
+    top: 70px;
+    left: 10px;
+    width: 400px;
+    margin: 15px;
+}
+#manager_right {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    width: 400px;
+}
+.with_title {
+    height: 280px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    margin: 15px;
+}
+.table_in {
+    height: 90%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.title {
+    background-color: rgba(59, 89, 152, 0.6);
+    border-radius: 5px 5px 0px 0px;
+    padding: 5px;
+}
+.info_span, .info_search, .add_search {
+    color: blue;
+    cursor: pointer;
+}
+.info_span:hover, .info_search:hover, .add_search:hover {
+    text-decoration: underline;
+}

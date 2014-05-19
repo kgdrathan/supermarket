@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Login :: Super Market Automation</title>
+    {% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:600' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id="login_wrapper">
+        <h1>Super Market Login</h1>
+        <div id="login">
+            <span id="message">{{ message }}</span>
+            <form action="{% url 'checkCreds' %}" method="get">
+            {% csrf_token %}
+                <table id="login_table" cellpadding="10">
+                    <tr><td>User ID: </td><td><input type="text" id="login_userid" name="login_userid" autofocus="autofocus"/></td></tr>
+                    <tr><td>Password: </td><td><input type="password" id="login_passwd" name="login_passwd"/></td></tr>
+                </table>
+                <button type="submit" id="blogin" class="button">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

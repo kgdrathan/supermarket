@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Employee :: Super Market Automation</title>
+    {% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/simplemodal.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/table.min.css' %}"/>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:600' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="{% static 'js/mootools.core.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/mootools.more.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/simplemodal.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}" charset="utf-8"></script>
+</head>
+<body>
+    <div id="header">
+        <h2>Employee Workspace ( {{user.user.username}} )</h2>
+        <div id="header_right" align="right">
+            <a class="menu_item" href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+    <div id="manager_wrapper">
+        <div id="manager_left">
+            <span id="addUser"></span> <span id="top1"></span> <span id="top2"></span> <span id="bStats"></span> <span id="register"></span> <span id="print"></span>
+            <form style="display: inline-block;">
+                <input type="text" id="search_input" autofocus="autofocus" style="width: 828px; height: 26px;"/>
+                <button class="button" id="search" style="position: relative; top: -48px; left: 600px;">Search</button>
+            </form>
+            <div id="manager_table"><table class="ui celled inverted purple table segment">
+                <thead>
+                        <tr><th>#</th>
+                        <th>Name</th>
+                        <th>Information</th></tr>
+                    </thead>
+                    <tbody style="height: 40%" id="search_tbody">
+                    {% for sit in sits %}
+                        <tr><td>{{ forloop.counter }}.</td>
+                        <td>{{ sit.name }} ( {{ sit.id }} )</td>
+                        <td><span class="info_search" data-itemid="{{ sit.id }}">Info</span>
+                            <span class="add_search" data-itemid="{{ sit.id }}" data-name="{{ sit.name }}" style="margin-left: 10px;">Add Stock</span>
+                        </td></tr>
+                    {% endfor %}
+                    </tbody>
+            </table></div>
+        </div>
+        <div id="manager_right">
+            <div id="top_today" class="with_title" style="height: 155px;">
+                <div class="title">
+                    <span>Add new Item</span>
+                </div>
+                <form class="table_in" style="width: 100%; margin: 15px; overflow-y: hidden;">
+                <span id="message3" style="width: 80%; margin: 0px 0px 5px 45px; width: 250px;"></span>
+                <table>
+                    <tbody style="height: 40%" id="item_tbody">
+                        <tr><td>Name:</td>
+                        <td><input type="text" style="width: 177%;" id="item_name" name="item_name" autofocus="autofocus"/></td></tr>
+                    </tbody>
+                </table>
+                <button type="submit" id="bItem" class="button" style="margin: 20px 290px;">Add</button>
+                </form>
+            </div>
+            <div id="top_last" class="with_title" style="height: 405px;">
+                <div class="title">
+                    <span>Add new Stock</span>
+                </div>
+                <div style="overflow-y: scroll; overflow-x: hidden;">
+                    <span id="message2" style="width: 80%; margin: 0px 0px 5px 45px; width: 250px;"></span>
+                    <h2 id="stock_name">Select a Item</h2>
+                    <form class="table_in" style="width: 150%; margin: 30px 0px 5px 5px; line-height: 35px;">
+                        <table style="width: 80%;" style="width: 292px;">
+                            <tbody id="stock_tbody">
+                                <tr><td>Barcode: </td><td><input type="text" id="stock_barcode" name="stock_barcode" autofocus="autofocus"/></td></tr>
+                                <tr><td>Quantity: </td><td><input type="text" id="stock_quantity" name="stock_quantity"/></td></tr>
+                                <tr><td>Max Price: </td><td><input type="text" id="stock_mprice" name="stock_mprice"/></td></tr>
+                                <tr><td>Sale Price: </td><td><input type="text" id="stock_sprice" name="stock_sprice"/></td></tr>
+                                <tr><td>Real Price: </td><td><input type="text" id="stock_rprice" name="stock_rprice"/></td></tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" id="bStock" class="button" data-itemid="" style="margin: 20px 290px;">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

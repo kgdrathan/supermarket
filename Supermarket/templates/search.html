@@ -1,0 +1,7 @@
+{% for sit in sits %}
+    <tr><td>{{ forloop.counter }}.</td>
+    <td>{{ sit.name }} ( {{ sit.id }} )</td>
+    <td><span class="info_search" data-itemid="{{ sit.id }}">Info</span>
+        {% if flag %} <span class="add_search" data-itemid="{{ sit.id }}" data-name="{{ sit.name }}" style="margin-left: 10px;">Add Stock</span> {% endif %}
+    </td></tr>
+{% endfor %}
